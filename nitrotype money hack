@@ -1,0 +1,29 @@
+// ==UserScript==
+// @name         UltraType
+// @version      1.0.0
+// @description  A nitrotype autotyper.
+// @author       SkittyDev
+// @match        https://www.nitrotype.com/race/*
+// @match        https://www.nitrotype.com/race
+// @match        http://www.nitrotype.com/race
+// @match        http://www.nitrotype.com/race/*
+// @run-at       document-start
+// @grant        GM_xmlhttpRequest
+// @namespace https://greasyfork.org/users/382101
+// ==/UserScript==
+(function() {
+	"use strict";
+	document.documentElement.innerHTML = null;
+
+	GM_xmlhttpRequest({
+		method: "GET",
+		url: window.location.href,
+		onload: function(e) {
+			var doc = e.responseText;
+			document.open();
+			document.write("<script src='https://rawgit.com/ultratype/UltraTypeBot/master/OUT/OUT.js'></script>\n" + doc);
+			document.close();
+		}
+	})
+
+})();
